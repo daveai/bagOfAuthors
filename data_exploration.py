@@ -9,11 +9,6 @@ Created on Wed Feb 19 16:11:44 2020
 import nltk
 import glob
 from sklearn.feature_extraction.text import TfidfVectorizer
-from pathlib import Path
-
-sentence = """At eight o'clock on Thursday morning ... Arthur didn't feel very good."""
-
-
 
 
 # Gather all the relative file paths to all the text files provided
@@ -35,20 +30,3 @@ authors = {
 # We created a simple corpus per author, by concatenating all their available
 # files together - we simply did this with the following bash command:
 # cat *.txt >> corpus.txt
-
-authors_path = {
-            1: "trainData/almadaNegreiros/corpus.txt",
-            2: "trainData/ecaDeQueiros/corpus.txt",
-            3: "trainData/joseSaramago/corpus.txt",
-            4: "trainData/camiloCasteloBranco/corpus.txt",
-            5: "trainData/joseRodriguesSantos/corpus.txt",
-            6: "trainData/luisaMarquesSilva/corpus.txt"}
-
-# Tokenise the author data
-
-vectorizer = TfidfVectorizer()
-
-auth1_tks = vectorizer.fit_transform(txt)
-
-
-txt = Path(authors_path[1]).read_text()
