@@ -1,0 +1,8 @@
+#!bin/bash
+rm -rf */*tokenised.csv
+for dir in */; do    
+    for book in $dir*.txt; do
+        echo "Tokenising: $book"
+	tr -sc 'A-Za-z' '\n' < $book | tr A-Z a-z | sort | uniq -c | sort -nr | awk '{print $1, $2}' | tr " " "," > ${book%.*}_tokenised.csv
+    done
+done  
